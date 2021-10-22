@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace C_Sharp_simple_calculator
@@ -13,26 +6,38 @@ namespace C_Sharp_simple_calculator
     public partial class Form1 : Form
     {
 
-        int number1;
-        int number2;
+        double number1;
+        double number2;
 
         String function = "";
+
+        
 
         public Form1()
         {
             InitializeComponent();
+
+            testBoxResult.Text = "0";
         }
 
         void numberCLick(object sender)
         {
             Button button = (Button)sender;
 
-            if (testBoxResult.Text.Equals("0"))
+            if (testBoxResult.Text.Equals("0") && button.Text.Equals("."))
+            {
+                testBoxResult.Text = testBoxResult.Text + button.Text;
+                
+            } 
+            else if(testBoxResult.Text.Equals(".") && button.Text.Equals("."))
             {
                 testBoxResult.Text = button.Text;
             }
-            else
+            else if(testBoxResult.Text.Equals("0"))
             {
+                testBoxResult.Text = button.Text;
+            }
+            else {
                 testBoxResult.Text = testBoxResult.Text + button.Text;
             }
 
@@ -41,11 +46,12 @@ namespace C_Sharp_simple_calculator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Dont touch here LOL
+            
         }
 
         private void ButtonPlus_Click(object sender, EventArgs e)
         {
+                       
             saveNumber1();
             function = "+";
         }
@@ -82,7 +88,7 @@ namespace C_Sharp_simple_calculator
 
         private void ButtonEqual_Click(object sender, EventArgs e)
         {
-            number2 = Convert.ToInt32(testBoxResult.Text);
+            number2 = Convert.ToDouble(testBoxResult.Text);
             testBoxResult.Text = "";
 
             if(function == "+")
@@ -110,6 +116,11 @@ namespace C_Sharp_simple_calculator
 
             }
             
+        }
+
+        private void ButtonDecimal_Click(object sender, EventArgs e)
+        {
+            numberCLick(sender);
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -164,8 +175,16 @@ namespace C_Sharp_simple_calculator
 
         void saveNumber1()
         {
-            number1 = Convert.ToInt32(testBoxResult.Text);
+            if(testBoxResult.Text == "")
+            {
+                MessageBox.Show("Input can not be empty! Please make sure you have valid input!");
+                return;
+            }
+
+            number1 = Convert.ToDouble(testBoxResult.Text);
             testBoxResult.Text = "";
         }
+
+        
     }
 }

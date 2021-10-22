@@ -47,6 +47,7 @@ namespace C_Sharp_simple_calculator
             this.ButtonCE = new System.Windows.Forms.Button();
             this.ButtonEqual = new System.Windows.Forms.Button();
             this.Button0 = new System.Windows.Forms.Button();
+            this.ButtonDecimal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testBoxResult
@@ -227,11 +228,22 @@ namespace C_Sharp_simple_calculator
             this.Button0.UseVisualStyleBackColor = true;
             this.Button0.Click += new System.EventHandler(this.Button0_Click);
             // 
+            // ButtonDecimal
+            // 
+            this.ButtonDecimal.Location = new System.Drawing.Point(125, 264);
+            this.ButtonDecimal.Name = "ButtonDecimal";
+            this.ButtonDecimal.Size = new System.Drawing.Size(50, 50);
+            this.ButtonDecimal.TabIndex = 18;
+            this.ButtonDecimal.Text = ".";
+            this.ButtonDecimal.UseVisualStyleBackColor = true;
+            this.ButtonDecimal.Click += new System.EventHandler(this.ButtonDecimal_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(240, 324);
+            this.Controls.Add(this.ButtonDecimal);
             this.Controls.Add(this.Button0);
             this.Controls.Add(this.ButtonEqual);
             this.Controls.Add(this.ButtonCE);
@@ -280,6 +292,7 @@ namespace C_Sharp_simple_calculator
         private System.Windows.Forms.Button ButtonCE;
         private System.Windows.Forms.Button ButtonEqual;
         private System.Windows.Forms.Button Button0;
+        private System.Windows.Forms.Button ButtonDecimal;
     }
 }
 
